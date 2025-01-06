@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Laptop</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      font-weight: 600;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .form-control {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .btn-primary {
+      background-color: #3498db;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background-color: #2980b9;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .btn-primary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tambah Laptop Baru</h1>
+    <form action="/admin/add" method="POST" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <label for="merek">Merek:</label>
+        <input type="text" class="form-control" name="merek" required>
+      </div>
+
+      <div class="form-group">
+        <label for="nama">Nama Laptop:</label>
+        <input type="text" class="form-control" name="nama" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="harga">Harga:</label>
+        <input type="text" class="form-control" name="harga" required>
+      </div>
+
+      <div class="form-group">
+        <label for="prosesor">Prosesor:</label>
+        <input type="text" class="form-control" name="prosesor" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gpu">Kartu Grafis:</label>
+        <input type="text" class="form-control" name="gpu" required>
+      </div>
+
+      <div class="form-group">
+        <label for="display">Layar:</label>
+        <input type="text" class="form-control" name="display" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ram">RAM:</label>
+        <input type="text" class="form-control" name="ram" required>
+      </div>
+
+      <div class="form-group">
+        <label for="penyimpanan">Penyimpanan:</label>
+        <input type="text" class="form-control" name="penyimpanan" required>
+      </div>
+
+      <div class="form-group">
+        <label for="daya_tahan_baterai">Daya Tahan Baterai:</label>
+        <input type="text" class="form-control" name="daya_tahan_baterai" required>
+      </div>
+
+      <div class="form-group">
+        <label for="berat">Berat:</label>
+        <input type="text" class="form-control" name="berat" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gambar">Gambar:</label>
+        <input type="file" class="form-control-file" name="gambar" required>
+      </div>
+
+      <div class="form-group">
+        <label for="link">Link:</label>
+        <input type="text" class="form-control" name="link" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Tambah Laptop</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

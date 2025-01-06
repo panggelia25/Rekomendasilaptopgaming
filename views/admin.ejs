@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laptop Recommendation Gamming</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-weight: 600;
+      color: #2c3e50;
+      text-align: center;
+      margin: 20px 0;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border: none;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: #fff;
+      animation: slideIn 0.8s ease-in-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      max-height: 150px;
+      object-fit: contain;
+      margin: 10px auto;
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .btn-primary {
+      background-color: #3498db;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #2980b9;
+      box-shadow: 0 8px 20px rgba(41, 128, 185, 0.6);
+    }
+
+    .form-inline {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .search-box {
+      width: 70%;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="gap-4 d-flex flex-wrap justify-content-end align-items-center p-4" style="width: 100%;">
+        <a href="/" class="btn btn-primary">Halaman Utama </a>
+        <a href="/logout" class="btn btn-danger">Logout</a>
+      </div>
+    <h1>Rekomendasi Laptop Gamming</h1>
+
+    <!-- Form Pencarian -->
+    <form method="GET" action="/">
+      <div class="form-group">
+        <label for="merek">Pilih Merek:</label>
+        <select class="form-control" name="merek" id="merek">
+          <option value=""></option>
+          <option value="ASUS">ASUS</option>
+          <option value="Acer">Acer</option>
+          <option value="Lenovo">Lenovo</option>
+        </select>
+      </div>
+      <label for="harga">Harga:</label>
+      <input name="harga" type="number" class="form-control" id="harga" aria-describedby="harga" placeholder="" />
+      <div class="form-group">
+        <label for="prosesor">Pilih Prosesor:</label>
+        <select class="form-control" name="prosesor" id="prosesor">
+          <option value=""></option>
+          <option value="Intel® Core™ i9-14900HX">Intel® Core™ i9-14900HX</option>
+          <option value="Intel® Core™ i5-13420H">Intel® Core™ i5-13420H</option>
+          <option value="Intel® Core™ i5-12450H">Intel® Core™ i5-12450H</option>
+          <option value="AMD Ryzen™ 7 7435HS">AMD Ryzen™ 7 7435HS</option>
+          <option value="Intel® Core™ i7-13650HX">Intel® Core™ i7-13650HX</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gpu">Pilih Kartu Grafis (GPU):</label>
+        <select class="form-control" name="gpu" id="gpu">
+          <option value=""></option>
+          <option value="NVIDIA® GeForce RTX™ 4060">NVIDIA® GeForce RTX™ 4060</option>
+          <option value="VIDIA® GeForce® RTX™ 4050">VIDIA® GeForce® RTX™ 4050</option>
+          <option value="NVIDIA® GeForce RTX™ 3050">NVIDIA® GeForce RTX™ 3050</option>
+          <option value="NVIDIA® GeForce® RTX™ 2050">NVIDIA® GeForce® RTX™ 2050</option>
+          <option value="NVIDIA® GeForce RTX™ 4050">NVIDIA® GeForce RTX™ 4050</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="display">Pilih Layar (Display):</label>
+        <select class="form-control" name="display" id="display">
+          <option value=""></option>
+          <option value="16-inch QHD">16-inch QHD</option>
+          <option value="15.6-inch FHD">I15.6-inch FHD</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ram">Pilih RAM:</label>
+        <select class="form-control" name="ram" id="ram">
+          <option value=""></option>
+          <option value="12GB">12GB</option>
+          <option value="16GB">16GB</option>
+          <option value="24GB">24GB</option>
+          <option value="32GB">32GB</option>
+          <option value="64GB">64GB</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="penyimpanan">Pilih Penyimpanan:</label>
+        <select class="form-control" name="penyimpanan" id="penyimpanan">
+          <option value=""></option>
+          <option value="512GB">512GB</option>
+          <option value="1TB">1TB</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="daya_tahan_baterai">Pilih Daya Tahan Baterai:</label>
+        <select class="form-control" name="daya_tahan_baterai" id="daya_tahan_baterai">
+          <option value=""></option>
+          <option value="48Wh">48Wh</option>
+          <option value="57Wh">57Wh</option>
+          <option value="60Wh">60Wh</option>
+          <option value="90Wh">90Wh</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="berat">Pilih Berat:</label>
+        <select class="form-control" name="berat" id="berat">
+          <option value=""></option>
+          <option value="2.1 kg">2.1 kg</option>
+          <option value="2.11 kg">2.11 kg</option>
+          <option value="2.30 kg">2.30 kg</option>
+          <option value="2.38 kg">2.38 kg</option>
+          <option value="2.50 kg">2.50 kg</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Cari</button>
+    </form>
+    <center><a href="/admin/add" class="btn btn-primary mb-3">Tambah Laptop</a></center>
+    <div class="row">
+      <h1>Rekomendasi Laptop</h1>
+      <% if (rekomendasi.length> 0) { %>
+        <% rekomendasi.forEach(({laptop})=> { %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img src="/uploads/<%= laptop.gambar %>" class="card-img-top" alt="<%= laptop.nama %>">
+              <div class="card-body">
+                <p class="card-text"><strong>Merek:</strong>
+                  <%= laptop.merek %>
+                </p>
+                <p class="card-text"><strong>Nama:</strong>
+                  <%= laptop.nama %>
+                </p>
+                <p class="card-text"><strong>Harga:</strong> Rp.<%= laptop.harga.toLocaleString('id-ID') %>
+                </p>
+                <p class="card-text"><strong>Prosesor:</strong>
+                  <%= laptop.prosesor %>
+                </p>
+                <p class="card-text"><strong>Kartu Grafis:</strong>
+                  <%= laptop.gpu %>
+                </p>
+                <p class="card-text"><strong>Layar:</strong>
+                  <%= laptop.display %>
+                </p>
+                <p class="card-text"><strong>RAM:</strong>
+                  <%= laptop.ram %>
+                </p>
+                <p class="card-text"><strong>Penyimpanan:</strong>
+                  <%= laptop.penyimpanan %>
+                </p>
+                <p class="card-text"><strong>Daya Tahan Baterai:</strong>
+                  <%= laptop.daya_tahan_baterai %>
+                </p>
+                <p class="card-text"><strong>Berat:</strong>
+                  <%= laptop.berat %>
+                </p>
+                <p class="card-text"><strong>Link:</strong> <a href="<%= laptop.link %>" target="_blank">Lihat
+                    Detail</a></p>
+                <a href="/admin/edit/<%= laptop.id %>" class="btn btn-info btn-sm">Edit</a>
+                <form action="/admin/delete/<%= laptop.id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-danger btn-sm"
+                    onclick="return confirm('Yakin Ingin Menghapus Data Ini ?')">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+            <% } else { %>
+              <div class="col-12">
+                <p class="text-center">Tidak ada data laptop yang ditemukan.</p>
+              </div>
+              <% } %>
+    </div>
+
+
+    <div class="row">
+      <h1>Laptop Lainnya</h1>
+      <% if (laptops.length> 0) { %>
+        <% laptops.forEach(laptop=> { %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <img src="/uploads/<%= laptop.gambar %>" class="card-img-top" alt="<%= laptop.nama %>">
+              <div class="card-body">
+                <p class="card-text"><strong>Merek:</strong>
+                  <%= laptop.merek %>
+                </p>
+                <p class="card-text"><strong>Nama:</strong>
+                  <%= laptop.nama %>
+                </p>
+                <p class="card-text"><strong>Harga:</strong> Rp.<%= laptop.harga.toLocaleString('id-ID') %>
+                </p>
+                <p class="card-text"><strong>Prosesor:</strong>
+                  <%= laptop.prosesor %>
+                </p>
+                <p class="card-text"><strong>Kartu Grafis:</strong>
+                  <%= laptop.gpu %>
+                </p>
+                <p class="card-text"><strong>Layar:</strong>
+                  <%= laptop.display %>
+                </p>
+                <p class="card-text"><strong>RAM:</strong>
+                  <%= laptop.ram %>
+                </p>
+                <p class="card-text"><strong>Penyimpanan:</strong>
+                  <%= laptop.penyimpanan %>
+                </p>
+                <p class="card-text"><strong>Daya Tahan Baterai:</strong>
+                  <%= laptop.daya_tahan_baterai %>
+                </p>
+                <p class="card-text"><strong>Berat:</strong>
+                  <%= laptop.berat %>
+                </p>
+                <p class="card-text"><strong>Link:</strong> <a href="<%= laptop.link %>" target="_blank">Lihat
+                    Detail</a></p>
+                <a href="/admin/edit/<%= laptop.id %>" class="btn btn-info btn-sm">Edit</a>
+                <form action="/admin/delete/<%= laptop.id %>" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-danger btn-sm"
+                    onclick="return confirm('Yakin Ingin Menghapus Data Ini ?')">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+            <% } else { %>
+              <div class="col-12">
+                <p class="text-center">Tidak ada data laptop lainnya.</p>
+              </div>
+              <% } %>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
