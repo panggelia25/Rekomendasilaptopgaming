@@ -80,43 +80,20 @@ app.get('/', verifyUser, (req, res) => {
   let conditions = [];
   let params = [];
 
-  // Add conditions dynamically based on valid input (not empty and not '0')
-  if (merek && merek !== '0') {
-    conditions.push('merek LIKE ?');
-    params.push(`%${merek}%`);
-  }
-  if (harga && harga !== '0') {
-    conditions.push('harga <= ?');
-    params.push(harga);
-  }
-  if (prosesor && prosesor !== '0') {
-    conditions.push('prosesor LIKE ?');
-    params.push(`%${prosesor}%`);
-  }
-  if (gpu && gpu !== '0') {
-    conditions.push('gpu LIKE ?');
-    params.push(`%${gpu}%`);
-  }
-  if (display && display !== '0') {
-    conditions.push('display LIKE ?');
-    params.push(`%${display}%`);
-  }
-  if (ram && ram !== '0') {
-    conditions.push('ram LIKE ?');
-    params.push(`%${ram}%`);
-  }
-  if (penyimpanan && penyimpanan !== '0') {
-    conditions.push('penyimpanan LIKE ?');
-    params.push(`%${penyimpanan}%`);
-  }
-  if (daya_tahan_baterai && daya_tahan_baterai !== '0') {
-    conditions.push('daya_tahan_baterai LIKE ?');
-    params.push(`%${daya_tahan_baterai}%`);
-  }
-  if (berat && berat !== '0') {
-    conditions.push('berat LIKE ?');
-    params.push(`%${berat}%`);
-  }
+  let all_data = {
+    merek, harga, prosesor, gpu, display, ram, penyimpanan, daya_tahan_baterai, berat
+  };
+
+  Object.keys(all_data).forEach(d => {
+    if (all_data[d].length > 0) {
+      const value = parseFloat(all_data[d]);
+      if (!isNaN(value) && !all_data[d].match(/[a-zA-Z]/igm)) {
+        conditions.push(`(${d} BETWEEN 0 AND ${all_data[d]})`)
+      } else {
+        conditions.push(`(${d} LIKE '${all_data[d]}')`);
+      };
+    }
+  });
 
   // Append WHERE clause if conditions exist
   if (conditions.length > 0) {
@@ -157,7 +134,7 @@ app.post('/login', async (req, res) => {
         res.clearCookie('user')
         res.redirect('/login')
       };
-      const resul = result[0] || {password:''};
+      const resul = result[0] || { password: '' };
       const corect = await bcrypt.compare(password, resul.password);
       if (corect) {
         const token = jwt.sign({
